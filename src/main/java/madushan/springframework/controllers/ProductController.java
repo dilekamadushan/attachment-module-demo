@@ -1,3 +1,4 @@
+/*
 package madushan.springframework.controllers;
 
 import madushan.springframework.domain.Product;
@@ -71,3 +72,4 @@ public class ProductController {
     }
 
 }
+*/
