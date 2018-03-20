@@ -37,42 +37,42 @@ public class AttachmentController {
     )
 
   
-  @RequestMapping(value = "/attachments", method= RequestMethod.GET, produces = "application/json")
+  @RequestMapping(value = "/attachment", method= RequestMethod.GET, produces = "application/json")
     public List<Attachment> showAttachments(Model model){
         List<Attachment> attachmentList = (List<Attachment>) attachmentService.listAllFiles();
         return attachmentList;
     }
 	
 	@ApiOperation(value = "Get an attachment  ",response = Attachment.class)
-	@RequestMapping(value = "/attachments/{attachmentId}", method= RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/attachment/{attachmentUUID}", method= RequestMethod.GET, produces = "application/json")
 	public Attachment showAttachment(@PathVariable Integer attachmentId, Model model){
 		Attachment attachment = attachmentService.getFileById(attachmentId);
 		return attachment;
 	}
 
     @ApiOperation(value = "Search for an attachment with an patientId, encounterId, visitId ",response = Attachment.class)
-    @RequestMapping(value = "/attachments/{patientId}/{encounterId}/{visitId}", method= RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/attachment/{patientUUID}/{encounterUUID}/{visitUUID}", method= RequestMethod.GET, produces = "application/json")
     public List<Attachment> showAttachment(@PathVariable Integer patientId, @PathVariable Integer encounterId, @PathVariable Integer visitId, Model model){
        List<Attachment> attachmentList = attachmentService.listAllFiles();
 	   return attachmentList;
     }
 
     @ApiOperation(value = "Add a attachment")
-    @RequestMapping(value = "/attachments", method = RequestMethod.POST)
+    @RequestMapping(value = "/attachment", method = RequestMethod.POST)
     public void saveAttachment(@RequestBody AttachmentRequest attachmentRequest){
     	
         attachmentService.saveFile(attachmentRequest.getAttachments());
     }
 
     @ApiOperation(value = "Update a attachment")
-    @RequestMapping(value = "/attachments/{patientId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/attachment/{patientUUID}", method = RequestMethod.PUT)
     public void updateAttachment(@PathVariable Integer patientId, @RequestBody AttachmentRequest attachmentRequest){
         Attachment storedAttachment = attachmentService.getFileById(patientId);
    
     }
 
     @ApiOperation(value = "Delete a attachment")
-    @RequestMapping(value="/attachments/{attachmentId}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/attachment/{attachmentUUID}", method = RequestMethod.DELETE)
     public void deleteAttachment(@PathVariable Integer attachmentId){
         attachmentService.deleteFile(attachmentId);
 
