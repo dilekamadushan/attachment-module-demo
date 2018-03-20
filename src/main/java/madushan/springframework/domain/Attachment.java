@@ -12,7 +12,7 @@ public class Attachment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	//@ApiModelProperty(notes = "The database generated concept ID")
-	private Integer id;
+	private Integer uuid;
 	
 	//@ApiModelProperty(notes = "The concept label")
 	private Integer size;
@@ -23,12 +23,12 @@ public class Attachment {
 	
 	private String description;
 	
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer uuid) {
+		this.uuid = uuid;
 	}
 	
 	public Integer getId() {
-		return id;
+		return uuid;
 	}
 	
 	public Integer getSize() {
