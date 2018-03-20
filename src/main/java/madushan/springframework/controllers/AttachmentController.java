@@ -44,7 +44,7 @@ public class AttachmentController {
     }
 	
 	@ApiOperation(value = "Get an attachment  ",response = Attachment.class)
-	@RequestMapping(value = "/attachments/{attachmentUUID}", method= RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/attachment/{attachmentUUID}", method= RequestMethod.GET, produces = "application/json")
 	public Attachment showAttachment(@PathVariable Integer attachmentId, Model model){
 		Attachment attachment = attachmentService.getFileById(attachmentId);
 		return attachment;
@@ -65,14 +65,14 @@ public class AttachmentController {
     }
 
     @ApiOperation(value = "Update a attachment")
-    @RequestMapping(value = "/attachment/{patientUUID}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/attachment/{attachmentUUID}", method = RequestMethod.PUT)
     public void updateAttachment(@PathVariable Integer patientId, @RequestBody AttachmentRequest attachmentRequest){
         Attachment storedAttachment = attachmentService.getFileById(patientId);
    
     }
 
     @ApiOperation(value = "Delete a attachment")
-    @RequestMapping(value="/attachments/{attachmentUUID}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/attachment/{attachmentUUID}", method = RequestMethod.DELETE)
     public void deleteAttachment(@PathVariable Integer attachmentId){
         attachmentService.deleteFile(attachmentId);
 
